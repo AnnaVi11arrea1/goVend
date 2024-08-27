@@ -29,8 +29,7 @@ h1, h2{
   padding-bottom: 20px;
   margin-bottom: 20px;
   border: 2px solid white;
-  box-shadow: 0 0 10px black;
-  
+  box-shadow: 0 0 10px black; 
 }
 
 #layout {
@@ -41,7 +40,6 @@ h1, h2{
   background-image: radial-gradient(blue, transparent);
   box-shadow: 0 0 10px black;
   padding-bottom: 10px;
-
 }
 
 .searchform {
@@ -52,8 +50,6 @@ h1, h2{
   box-shadow: 0 0 10px black;
   font-weight: 600;
   border: 3px solid;
-  
- 
 }
 
 input{
@@ -101,4 +97,27 @@ button:hover{
 
 li {
   margin-bottom: 20px;
+}
+
+.goback{
+  border: 3px solid blue;
+  border-radius: 50px;
+  background-color: antiquewhite;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+footer{
+  margin-top: 100px;
+}
+
+.previous_list {
+  display: flex;
+  flex-direction: row;
+  background-color: aqua;
+  border-radius: 50px;
+  border: 2px solid black;
+  padding: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
 }

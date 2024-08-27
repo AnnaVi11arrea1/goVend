@@ -3,6 +3,7 @@ require "sinatra/reloader"
 require "openai"
 require "http"
 require "json"
+require "sinatra/cookies"
 
 
 
@@ -31,7 +32,7 @@ request_body_hash = {
   "messages" => [
     {
       "role" => "system",
-      "content" => "You help food and craft vendors find events that are currently accepting applications for vendors. You provide an item with clickable links to the event pages and applications. The list item needs to have the following keys: Event, Location, Date, Website, Application Link. You output them as list items in an <li> tag. Show 5 list items."
+      "content" => "You help food and craft vendors find real events that are currently accepting applications for vendors. You provide an item with clickable links to the event pages and applications. The list item needs to have the following keys: Event, Location, Date, Website, Application Link. You output them as list items in an <li> tag. Show 5 list items."
     },
     {
       "role" => "user",
@@ -53,44 +54,19 @@ raw_response = HTTP.headers(request_headers_hash).post(
 parsed_response = JSON.parse(raw_response)
 @info_string = parsed_response.fetch("choices")
 
- info_string = parsed_response.fetch("choices")
-  information = info_string.at(0)
-  message = information.fetch("message")
-  @reply = message.fetch("content")
-  reply = message.fetch("content")
-  reply2 = reply.gsub("\n","")
+info_string = parsed_response.fetch("choices")
+information = info_string.at(0)
+message = information.fetch("message")
+@reply = message.fetch("content")
+reply = message.fetch("content")
+reply2 = reply.gsub("\n","")
+@item1 = reply2
 
-  
-
-  @item1 = reply2
- 
-
-
-
+cookies["Events"] = reply2
 
 erb(:events_chat, {:layout => :layout})
+end
 
-
-
-
-
-
-
-
-
-
-
-  # message_list = [
-  #   { "role" => "system", "content" => "You help food and craft vendors find events that are currently accepting applications for vendors. You provide a list of 5 items to start with clickable links to the event pages and applications. You ask them is they are interested in a specific type of event or any. You ask if they have a location preference or not. You ask them if they have a specific date range in mind or not." },
-  #   { "role" => "user", "content" => "Generate a list of events to choose from." }
-  # ]
-
-  # api_response = client.chat(
-  #   parameters: {
-  #     model: "gpt-3.5-turbo",
-  #     messages:  message_list
-  #   }
-  # )  
-  
-  
+get("/event_searches") do
+  erb(:past_searches)
 end

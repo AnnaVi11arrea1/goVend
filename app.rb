@@ -27,25 +27,26 @@ get("/chat") do
         body: {
           model: "gpt-3.5-turbo",
           messages: [
-            { role: "system", content: "You find real events that are currently accepting applications for vendors and provide information with clickable links to the event pages and applications. The list item needs to have the following keys: Event, Location, Date, Website, Application Link. Show 5 list items." },
+            { role: "system", content: "You find real events that are currently accepting applications for vendors and provide information with clickable links to the event pages and applications. The list items need to have the following: Event, Location, Date, Website, Application Link. Show 5 list items. Each list item is wrapped in an <li> tag." },
             { role: "user", content: prompt }
           ],
-          max_tokens: 150,
+          max_tokens: 2000,
           n: 1
         }.to_json
       )
 
       parsed_response = response.parse
-      puts "API Response: #{parsed_response}"  # Log the full response for debugging
+      puts "API Response: #{parsed_response}" 
+      pp parsed_response
+     
 
       if parsed_response["choices"]
         parsed_response["choices"].each do |choice|
-          out << "data: #{choice["message"]["content"]}\n\n"
+          out << "data: #{choice["message"]["content"].strip}\n\n"
         end
       else
         out << "data: An error occurred: No choices found in the response\n\n"
       end
-
 
     rescue => e
       out << "data: An error occurred: #{e.message}\n\n"
@@ -55,13 +56,13 @@ get("/chat") do
   end
 end
 
-
 get("/events") do
     content_type 'text/event-stream'
     headers 'Cache-Control' => 'no-cache', 'Connection' => 'keep-alive'
     stream do |out|
       out << "data: Hello World\n\n"
       sleep 1
+   
     end
  end
 

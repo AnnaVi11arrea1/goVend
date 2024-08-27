@@ -6,6 +6,9 @@ require "json"
 require "sinatra/cookies"
 require "thin"
 
+
+set :public_folder, "public"
+
 get("/") do
  erb(:index, {:layout => :layout})
 end

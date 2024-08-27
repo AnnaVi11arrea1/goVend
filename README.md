@@ -1,4 +1,4 @@
-=========
+
 goVend 
 =========
 
@@ -11,3 +11,7 @@ One can search things like:
 - s specific type of event
 
 The search returns a list of events with clickable links. The last search is saved in cookies and is available to the user bly clicking the "Past Searches" button.
+
+![screenshot](pic1.png)
+![screenshot](pic2.png)
+

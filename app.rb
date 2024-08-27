@@ -32,17 +32,20 @@ request_body_hash = {
   "messages" => [
     {
       "role" => "system",
-      "content" => "You help food and craft vendors find real events that are currently accepting applications for vendors. You provide an item with clickable links to the event pages and applications. The list item needs to have the following keys: Event, Location, Date, Website, Application Link. You output them as list items in an <li> tag. Show 5 list items."
+      "content" => "You find real events that are currently accepting applications for vendors and provide information with clickable links to the event pages and applications. The list item needs to have the following keys: Event, Location, Date, Website, Application Link. You output them as list items in an <li> tag. Show 5 list items."
     },
     {
       "role" => "user",
-      "content" => "Generate a list of events to choose from within a certain date and geogrphical region."
+      "content" => "Reads the list that you provide."
     }
   ]
 }
 
+
+
 question = params.fetch("user_question") 
 @asked_question = question 
+
 
 request_body_json = JSON.generate(request_body_hash)
 
@@ -66,6 +69,7 @@ cookies["Events"] = reply2
 
 erb(:events_chat, {:layout => :layout})
 end
+
 
 get("/event_searches") do
   erb(:past_searches)

@@ -1,18 +1,13 @@
-# sinatra-template
+=========
+goVend 
+=========
 
-Use this repository to create new Sinatra apps. 
+A search assistant that helps food, craft, retail vendors and other businessesfind events to sell or promote the their products of services at. The search will scope to whatever is entered into the search bar.
 
-Optionally, to use `ActiveRecord` for database operations, add to the `app.rb`:
+One can search things like:
 
-```ruby
-require "sinatra/activerecord"
-```
+- a specific location
+- a specific period of time
+- s specific type of event
 
-And in the `config/environment.rb` file add this code block:
-
-```ruby
-configure do
-  # setup a database connection
-  set(:database, { adapter: "sqlite3", database: "db/development.sqlite3" })
-end
-```
+The search returns a list of events with clickable links. The last search is saved in cookies and is available to the user bly clicking the "Past Searches" button.

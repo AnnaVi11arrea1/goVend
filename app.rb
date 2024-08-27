@@ -57,6 +57,14 @@ parsed_response = JSON.parse(raw_response)
   information = info_string.at(0)
   message = information.fetch("message")
   @reply = message.fetch("content")
+  reply = message.fetch("content")
+  reply2 = reply.split("\n")
+
+  @item1 = reply2.at(0)
+  @item2 = reply2.at(1)
+  @item3 = reply2.at(2)
+  @item4 = reply2.at(3)
+  @item5 = reply2.at(4)
 
 
 

@@ -9,6 +9,7 @@ gem "openai"
 gem "ruby-openai"
 gem "json"
 gem "http"
+gem "thin"
 
 # Use Puma as the app server
 gem "puma", "~> 5.0"

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Chat with GPT-3.5 Turbo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Streaming Chat with GPT-3.5 Turbo</h1>
+    <div id="chat-box"></div>
+    <input type="text" id="input-box" placeholder="Type a message..." />
+
+    <script>
+        document.getElementById('input-box').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                let userMessage = e.target.value;
+                e.target.value = ''; // Clear input box
+
+                let chatBox = document.getElementById('chat-box');
+                chatBox.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+
+                let eventSource = new EventSource(`/chat?message=${encodeURIComponent(userMessage)}`);
+                
+                eventSource.onmessage = function (event) {
+                    chatBox.innerHTML += `<p><strong>GPT-3.5 Turbo:</strong> ${event.data}</p>`;
+                    chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the bottom
+                };
+
+                eventSource.onerror = function () {
+                    eventSource.close();
+                };
+            }
+        });
+    </script>
+</body>
+</html>

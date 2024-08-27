@@ -38,6 +38,7 @@ GEM
     concurrent-ruby (1.2.2)
     crack (0.4.5)
       rexml
+    daemons (1.4.1)
     debug_inspector (1.1.0)
     diff-lcs (1.5.0)
     domain_name (0.6.20240107)
@@ -47,6 +48,7 @@ GEM
       rspec
     erubi (1.12.0)
     event_stream_parser (1.0.0)
+    eventmachine (1.2.7)
     faraday (2.10.1)
       faraday-net_http (>= 2.0, < 3.2)
       logger
@@ -168,6 +170,10 @@ GEM
     tabulo (2.8.2)
       tty-screen (= 0.8.1)
       unicode-display_width (~> 2.2)
+    thin (1.8.2)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (>= 1, < 3)
     tilt (2.1.0)
     tty-screen (0.8.1)
     tzinfo (2.0.6)
@@ -212,6 +218,7 @@ DEPENDENCIES
   sinatra-contrib
   sqlite3 (~> 1.4)
   table_print
+  thin
   webdrivers
   webmock
 

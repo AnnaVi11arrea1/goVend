@@ -1,11 +1,22 @@
+<head>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
 
+<div id="examples">
+  <h2>Lets find your next event!</h2>
+  <ul>Search for things like:
+    <li>Music festivals in Northern Illinois</li>
+    <li>Craft fairs in august</li>
+    <li>Food festivals in Chicago</li>
+  </ul>
+</div>
 
-<p>Lets find your next event!</p>
-
-<form action="/list" method="post">
-  <label for="question">Enter your search paramters:</label>
+<form action="/list" method="post" class="searchform">
+  <label for="question">Enter your search:</label>
   <input type="text" id="question" name="user_question">
   
   <button>Search</button>
   
 </form>
+</body>

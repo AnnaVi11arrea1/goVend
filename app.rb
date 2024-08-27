@@ -31,11 +31,11 @@ request_body_hash = {
   "messages" => [
     {
       "role" => "system",
-      "content" => "You help food and craft vendors find events that are currently accepting applications for vendors. You provide a list of 5 items to start with clickable links to the event pages and applications. You ask them is they are interested in a specific type of event or any. You ask if they have a location preference or not. You ask them if they have a specific date range in mind or not."
+      "content" => "You help food and craft vendors find events that are currently accepting applications for vendors. You provide an item with clickable links to the event pages and applications. The list item needs to have the following keys: Event, Location, Date, Website, Application Link. You output them as list items in an <li> tag. Show 5 list items."
     },
     {
       "role" => "user",
-      "content" => "Generate a list of events to choose from."
+      "content" => "Generate a list of events to choose from within a certain date and geogrphical region."
     }
   ]
 }
@@ -58,13 +58,12 @@ parsed_response = JSON.parse(raw_response)
   message = information.fetch("message")
   @reply = message.fetch("content")
   reply = message.fetch("content")
-  reply2 = reply.split("\n")
+  reply2 = reply.gsub("\n","")
 
-  @item1 = reply2.at(0)
-  @item2 = reply2.at(1)
-  @item3 = reply2.at(2)
-  @item4 = reply2.at(3)
-  @item5 = reply2.at(4)
+  
+
+  @item1 = reply2
+ 
 
 
 

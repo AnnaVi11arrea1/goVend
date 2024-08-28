@@ -33,7 +33,7 @@ get("/chat") do
         body: {
           model: "gpt-3.5-turbo",
           messages: [
-            { role: "system", content: "You find real events that are currently accepting applications for vendors and provide information with clickable links to the event pages and applications. The list items need to have the following: Event, Location, Date, Website, Application Link. Show 5 list items. Each list item is wrapped in an <li> tag." },
+            { role: "system", content: "You find real events that are currently accepting applications for vendors and provide information with clickable links to the event pages and applications. The list items need to have the following: Event, Location, Date, Website, Application Link. Show 5 list items. Each list item is wrapped in an <li> tag and has the following HMTL before the word 'Event' <input type='checkbox' class=list_item>" },
             { role: "user", content: prompt }
           ],
           max_tokens: 2000,
@@ -48,11 +48,12 @@ get("/chat") do
      messages = listitems.fetch("message")
      content = messages.fetch("content")  # Log the full response for debugging
 
-     if response.status.success?
+     if response.status.success? 
       contentString = content.to_s
       newContentString = contentString.split('\n').to_s
       newContentString2 = newContentString.gsub(/\\n/, "<br>")
-      out << "data: #{newContentString2}\n\n"
+            out << "data: #{newContentString2}\n\n"
+      
     else
       out << "data: Error: #{response.status}\n\n"
     end

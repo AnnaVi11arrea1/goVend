@@ -48,13 +48,14 @@ get("/chat") do
      messages = listitems.fetch("message")
      content = messages.fetch("content")  # Log the full response for debugging
 
-     if parsed_response.key?("choices")
-        content.each do |content|
-         out << "data: #{content}<br>"
-       end
-     else
-       out << "data: An error occurred: No choices found in the response\n\n"
-     end
+     if response.status.success?
+      contentString = content.to_s
+      newContentString = contentString.split('\n').to_s
+      newContentString2 = newContentString.gsub(/\\n/, "<br>")
+      out << "data: #{newContentString2}\n\n"
+    else
+      out << "data: Error: #{response.status}\n\n"
+    end
     rescue => e
       out << "data: Error: #{e.message}\n\n"
       puts "Error: #{e.message}"

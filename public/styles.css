@@ -10,6 +10,7 @@ body {
 }
 
 p {
+  display: flex;
   background-color: black;
   color: white;
   padding: 20px;
@@ -132,7 +133,7 @@ footer{
   height: 100%;
   border: 1px solid #ccc;
   padding: 10px;
-  overflow-y: scroll;
+  overflow: scroll;
 
 }
 #input-box {

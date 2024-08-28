@@ -103,6 +103,7 @@ button:hover{
 
 li {
   margin-bottom: 20px;
+  list-style-type: none;
 }
 
 .goback{
@@ -165,4 +166,15 @@ footer{
 .chat {
   display: flex;
   flex-direction: column;
+}
+
+input[type="checkbox"] {
+  display-style-type: none;
+  background-color: lime;
+  height: 30px;
+  width: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }

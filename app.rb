@@ -33,7 +33,7 @@ get("/chat") do
         body: {
           model: "gpt-3.5-turbo",
           messages: [
-            { role: "system", content: "You find real events that are currently accepting applications for vendors and provide information with clickable links to the event pages and applications. The list items need to have the following: Event, Location, Date, Website, Application Link. Show 5 list items. Each list item is wrapped in an <li> tag and has the following HMTL before the word 'Event' <input type='checkbox' class=list_item>" },
+            { role: "system", content: "You find real events that are currently accepting applications for vendors and provide information with clickable links to the event pages and applications. The list items need to have the following: Event, Location, Date, Website, Application Link. Show 5 list items. Each list item is wrapped in an <li> tag and has the following HMTL after the <li> tag: <input type='checkbox' class=list_item>" },
             { role: "user", content: prompt }
           ],
           max_tokens: 2000,

@@ -7,7 +7,10 @@ require "sinatra/cookies"
 require "thin"
 
 
-set :public_folder, "public"
+get('/styles.css') do
+  content_type 'text/css'
+  File.read(File.join('public', 'styles.css'))
+end
 
 get("/") do
  erb(:index, {:layout => :layout})
@@ -37,22 +40,24 @@ get("/chat") do
           n: 1
         }.to_json
       )
-
-      parsed_response = response.parse
-      puts "API Response: #{parsed_response}" 
-      pp parsed_response
      
+     parsed_response = response.parse
+     puts "API Response: #{parsed_response}"
+     choices = parsed_response.fetch("choices")
+     listitems = choices.at(0)
+     messages = listitems.fetch("message")
+     content = messages.fetch("content")  # Log the full response for debugging
 
-      if parsed_response["choices"]
-        parsed_response["choices"].each do |choice|
-          out << "data: #{choice["message"]["content"].strip}\n\n"
-        end
-      else
-        out << "data: An error occurred: No choices found in the response\n\n"
-      end
-
+     if parsed_response.key?("choices")
+        content.each do |content|
+         out << "data: #{content}<br>"
+       end
+     else
+       out << "data: An error occurred: No choices found in the response\n\n"
+     end
     rescue => e
-      out << "data: An error occurred: #{e.message}\n\n"
+      out << "data: Error: #{e.message}\n\n"
+      puts "Error: #{e.message}"
     ensure
       out.close
     end
@@ -63,10 +68,17 @@ get("/events") do
     content_type 'text/event-stream'
     headers 'Cache-Control' => 'no-cache', 'Connection' => 'keep-alive'
     stream do |out|
+     begin
       out << "data: Hello World\n\n"
       sleep 1
-   
+    rescue => e
+      puts "Error: #{e.message}"
+    ensure
+      out.close rescue nil
     end
+    end
+
+
  end
 
  

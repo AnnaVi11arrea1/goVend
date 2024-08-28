@@ -126,11 +126,14 @@ footer{
 /* CHAT */
 
 #chat-box {
+  display:flex;
+  fllex-direction: column;
   width: 100%;
   height: 100%;
   border: 1px solid #ccc;
   padding: 10px;
   overflow-y: scroll;
+
 }
 #input-box {
   width: 100%;

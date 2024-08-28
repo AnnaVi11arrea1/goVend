@@ -1,4 +1,4 @@
-addEventListener("DOMContentLoaded", (event) => {
+addEventListener("DOMContentLoaded", () => {
     document.getElementById('input-box').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         let userMessage = e.target.value;

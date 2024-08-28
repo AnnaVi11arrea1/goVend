@@ -178,3 +178,22 @@ input[type="checkbox"] {
   border: 1px solid #ccc;
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
+
+#selectedList {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  width:50%;
+}
+
+.list-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  width: 100%;
+}

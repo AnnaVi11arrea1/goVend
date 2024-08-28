@@ -5,12 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
             button.addEventListener('click', function() {
                 let listItem = this.previousElementSibling;
                 if (listItem.checked) {
-                    
+                        const placeitem = document.getElementById('selected-list')
                         const listaf = document.createElement("li");
                         const nodeaf = document.createTextNode(this.parentElement.innerText.trim());
-
                         listaf.appendChild(nodeaf);
-                        document.getElementById('selected-list').appendChild(listaf);
+                        placeitem.appendChild(listaf);
 
                 }
             });

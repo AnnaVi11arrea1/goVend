@@ -11,6 +11,8 @@ gem "json"
 gem "http"
 gem "thin"
 
+gem "openurl"
+
 # Use Puma as the app server
 gem "puma", "~> 5.0"
 

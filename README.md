@@ -11,3 +11,5 @@ One can search things like:
 - s specific type of event
 
 The search returns a list of events with clickable links. The last search is saved in cookies and is available to the user bly clicking the "Past Searches" button.
+
+To begin: Type "rackup" in the terminal, press enter, and command + click on the port. This should open it up in a web browser. 
